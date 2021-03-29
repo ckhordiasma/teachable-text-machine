@@ -1,7 +1,11 @@
 <script>
-  import * as tf from "@tensorflow/tfjs";
-  import * as use from "@tensorflow-models/universal-sentence-encoder";
-  import * as knn from "@tensorflow-models/knn-classifier";
+import * as tf from "@tensorflow/tfjs";
+import * as use from "@tensorflow-models/universal-sentence-encoder";
+import * as knn from "@tensorflow-models/knn-classifier";
+import Category from "./Category.svelte";
+import categories from './stores'
+
+/*
   let cat1 = "";
   let cat2 = "";
   let pred = '';
@@ -38,19 +42,20 @@
 	const predEncoded = await encode(pred);
 	console.log(await classifier.predictClass(predEncoded));
   }
+*/
 </script>
 
 <main>
-  <textarea bind:value={cat1} />
+  {#each categories as category (category.id)}
+	<Category label={Category.label} />
+  {/each}
 
-  <button on:click={() => addCategory(cat1, 1)}> Add Category </button>
-  <textarea bind:value={cat2} />
-  <button on:click={() => addCategory(cat2, 2)}> Add Category </button>
-
+  <!--
   <button on:click={train}> Training</button>
-
+ 
   <input type="text" bind:value={pred} />
   <button on:click={predict}> Predict</button>
+  -->
 </main>
 
 <style>
