@@ -5,6 +5,9 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 
+//added for bulma
+import postcss from 'rollup-plugin-postcss'
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -47,6 +50,9 @@ export default {
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
 
+		//added for bulma
+		postcss(),
+		
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -
